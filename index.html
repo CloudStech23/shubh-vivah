@@ -27,6 +27,7 @@
       integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body
     style="
@@ -41,6 +42,21 @@
     class="align-items-center justify-content-center text-center p-4 display-2"
     id="card"
   >
+    <img
+      src="/couple5.jpg"
+      style="
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      "
+      alt="Top Right Circular Image"
+    />
+
     <div
       class=""
       style="
@@ -62,7 +78,7 @@
         font-size: 120px;
       "
     >
-      Subh Vivah
+      Shubh Vivah
     </div>
     <div
       class=""
@@ -78,15 +94,32 @@
     <div
       id="message"
       style="
-        margin-top: 10rem;
+        margin-top: 5rem;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
           'Lucida Sans', Arial, sans-serif;
       "
     ></div>
+    <div class="image-grid">
+      <div class="image-row">
+        <!-- <div class="image image-01"></div> -->
+        <div class="image image-02"></div>
+        <div class="image image-03"></div>
+      </div>
+      <div class="image-row">
+        <div class="image image-04"></div>
+        <div class="image image-05"></div>
+      </div>
+      <div class="image-row">
+        <!-- <div class="image image-06"></div>
+        <div class="image image-07"></div> -->
+        <!-- <div class="image image-08"></div> -->
+        <!-- <div class="image image-09"></div> -->
+      </div>
+    </div>
 
     <script>
       // Convert IST to UTC (India is UTC+5:30)
-      const unlockTimeIST = new Date("2025-04-07T18:53:00+05:30");
+      const unlockTimeIST = new Date("2025-04-08T14:20:00+05:30");
       const unlockTimeUTC = new Date(unlockTimeIST.toUTCString());
 
       const messageEl = document.getElementById("message");
@@ -97,7 +130,14 @@
         const diff = Math.floor((unlockTimeUTC - now) / 1000);
 
         if (diff <= 0) {
-          Card.innerHTML = ``;
+          Card.innerHTML = `<div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https://www.canva.com/design/DAGj8DuI3wo/Ep4XLFYPGg2tWcInD5y33A/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
+<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGj8DuI3wo&#x2F;Ep4XLFYPGg2tWcInD5y33A&#x2F;view?utm_content=DAGj8DuI3wo&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Mahila sangeet Menu Templet </a> Edited by Uday Solanki`;
           //   messageEl.innerHTML = `Please wait, the card will be available in 11h 5m 22s`;
           clearInterval(timer);
         } else {
