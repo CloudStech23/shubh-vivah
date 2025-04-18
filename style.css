@@ -8,12 +8,15 @@
 
 .image-row .image {
   margin: 12px;
-  height: 240px;
+  height: 350px;
+  object-position: top;
 }
 
 .image {
   background-repeat: no-repeat;
   background-size: cover;
+  object-fit: cover;
+  object-position: top;
   background-position: center center;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.15),
     0 6px 20px rgba(0, 0, 0, 0.7);
@@ -27,21 +30,24 @@
 .image-02 {
   background-image: url("/couple1.jpg");
   flex: 2;
+  object-position: top;
 }
 
 .image-03 {
-  background-image: url("/couple2.jpg");
+  background-image: url("/couple7.jpg");
   flex: 2;
 }
 
 .image-04 {
-  background-image: url("/couple3.jpg");
+  background-image: url("/couple5.jpg");
   flex: 1;
 }
 
 .image-05 {
-  background-image: url("/couple4.jpg");
+  background-image: url("/couple3.jpg");
   flex: 2;
+  position: relative;
+  overflow: hidden;
 }
 
 .image-06 {
@@ -55,7 +61,7 @@
 }
 
 .image-08 {
-  background-image: url("/couple5.jpg");
+  background-image: url("/couple1.jpg");
   flex: 4;
 }
 
@@ -87,4 +93,9 @@
   .image-row .image {
     flex-basis: auto;
   }
+}
+
+.image-03,
+.image-05 {
+  background-position: 50% 23%;
 }

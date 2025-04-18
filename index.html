@@ -28,6 +28,10 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   </head>
   <body
     style="
@@ -43,15 +47,16 @@
     id="card"
   >
     <img
-      src="/couple5.jpg"
+      src="/couple9.jpg"
       style="
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: 30px;
+        right: 40px; /* moved slightly to the left */
         width: 320px;
         height: 320px;
         border-radius: 50%;
         object-fit: cover;
+
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       "
       alt="Top Right Circular Image"
@@ -63,32 +68,38 @@
         margin-top: 40%;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
           'Lucida Sans', Arial, sans-serif;
-        color: #eba6a6;
-        font-weight: bold;
+        color: #ee7171;
+        font-weight: light;
+        font-size: 50px;
+        
       "
     >
-      Welcome to the Grand Wedding Feast 💐💐
+      With every moment spent by your side🙈, life feels more magical✨ — and today, even the stars seem to celebrate you.🎊
     </div>
     <div
       class=""
       style="
-        margin-top: 6rem;
+        margin-top: 3rem;
         color: rgb(240, 151, 41);
         font-family: cursive;
         font-size: 120px;
       "
     >
-      Shubh Vivah
+      Happiest Birthday
     </div>
     <div
       class=""
       style="
         margin-top: 1rem;
         font-style: italic;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family:IBM Plex Serif;
+        font-style: normal;
+        font-weight: 500;
+        color: #f887a1;
+        font-size: 70px;
       "
     >
-      14/04/2025, 7:30 PM
+     Dear Love 😚🫶❤️
     </div>
 
     <div
@@ -115,43 +126,75 @@
         <!-- <div class="image image-08"></div> -->
         <!-- <div class="image image-09"></div> -->
       </div>
+      <!-- <button onclick="runConfetti()">Celebrate Again!</button> -->
     </div>
+ </div>
+
+    <!-- <div class="balloon-container">
+      <div class="balloon red"></div>
+      <div class="balloon blue"></div>
+      <div class="balloon green"></div>
+    </div> -->
 
     <script>
-      // Convert IST to UTC (India is UTC+5:30)
-      const unlockTimeIST = new Date("2025-04-08T14:20:00+05:30");
-      const unlockTimeUTC = new Date(unlockTimeIST.toUTCString());
+      const count = 300;
+      const defaults = {
+        origin: { y: 0.5 },
+        angle: 90,
+        spread: 360,
+      };
 
-      const messageEl = document.getElementById("message");
-      const Card = document.getElementById("card");
-
-      function updateCountdown() {
-        const now = new Date();
-        const diff = Math.floor((unlockTimeUTC - now) / 1000);
-
-        if (diff <= 0) {
-          Card.innerHTML = `<div style="position: relative; width: 100%; height: 0; padding-top: 141.4286%;
- padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
- border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https://www.canva.com/design/DAGj8DuI3wo/Ep4XLFYPGg2tWcInD5y33A/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
-</div>
-<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGj8DuI3wo&#x2F;Ep4XLFYPGg2tWcInD5y33A&#x2F;view?utm_content=DAGj8DuI3wo&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Mahila sangeet Menu Templet </a> Edited by Uday Solanki`;
-          //   messageEl.innerHTML = `Please wait, the card will be available in 11h 5m 22s`;
-          clearInterval(timer);
-        } else {
-          let mins = Math.floor(diff / 60);
-          const secs = diff % 60;
-          const hour = Math.floor(mins / 60);
-          mins = mins % 60;
-          messageEl.textContent = `${hour}h ${mins}m ${secs}s left — until your plate meets its soulmate 🍽️ `;
-        }
+      function fire(particleRatio, opts) {
+        confetti(
+          Object.assign({}, defaults, opts, {
+            particleCount: Math.floor(count * particleRatio),
+          })
+        );
       }
 
-      updateCountdown(); // Initial call
-      const timer = setInterval(updateCountdown, 1000);
+      function fireFrom(positionX) {
+        confetti({
+          particleCount: 150,
+          startVelocity: 55,
+          spread: 100,
+          origin: { x: positionX, y: 0.6 }, // x: 0 = left, 0.5 = center, 1 = right
+          scalar: 1.7,
+        });
+      }
+
+      function runConfetti() {
+        // Center blast
+        fire(0.25, { spread: 80, startVelocity: 60, scalar: 1.4 });
+        fire(0.2, { spread: 100, startVelocity: 50, scalar: 1.6 });
+        fire(0.35, { spread: 120, decay: 0.9, scalar: 1.5 });
+        fire(0.1, { spread: 140, startVelocity: 35, decay: 0.92, scalar: 1.8 });
+        fire(0.1, { spread: 160, startVelocity: 65, scalar: 2.0 });
+
+        // Left, Center, Right burst with delay
+        setTimeout(() => fireFrom(0.1), 700); // Left
+        // setTimeout(() => fireFrom(0.5), 1400); // Center
+        setTimeout(() => fireFrom(0.9), 1400); // Right
+      }
+
+      // Show confetti only once per visit
+      window.addEventListener("load", () => {
+        // if (!localStorage.getItem("confettiShown")) {
+        runConfetti();
+        // localStorage.setItem("confettiShown", "true");
+        // }
+      });
     </script>
+    <script>
+      document
+        .getElementById("balloonsButton")
+        .addEventListener("click", function () {
+          // This triggers the balloons animation
+          balloons();
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/balloons-js@1.0.0/dist/balloons.min.js"></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
