@@ -92,11 +92,11 @@
       style="
         margin-top: 1rem;
         font-style: italic;
-        font-family:IBM Plex Serif;
+        font-family:cursive;
         font-style: normal;
-        font-weight: 500;
+        font-weight: bold;
         color: #f887a1;
-        font-size: 70px;
+        font-size: 90px;
       "
     >
      Dear Love 😚🫶❤️
@@ -129,6 +129,11 @@
       <!-- <button onclick="runConfetti()">Celebrate Again!</button> -->
     </div>
  </div>
+ <audio id="bg-music" autoplay muted style="display: none">
+  <source src="birthday.mp3" type="audio/mpeg" />
+</audio>
+
+
 
     <!-- <div class="balloon-container">
       <div class="balloon red"></div>
@@ -192,6 +197,27 @@
           balloons();
         });
     </script>
+    <script>
+  window.addEventListener("load", () => {
+    const audio = document.getElementById("bg-music");
+
+    // Attempt to play
+    audio.play().then(() => {
+      // Autoplay worked: unmute
+      audio.muted = false;
+    }).catch(() => {
+      // If autoplay is blocked (e.g., on mobile), play on first user click
+      document.body.addEventListener("click", () => {
+        audio.muted = false;
+        audio.play();
+      }, { once: true });
+    });
+  });
+</script>
+
+
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/balloons-js@1.0.0/dist/balloons.min.js"></script>
 
